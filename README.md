@@ -8,6 +8,7 @@ I tried to filter video and export filtered video with GPUImage to 'reuse' GPUIm
 - GPUImage only have good result if use just filter images.
 - Have many issue when play/pause/seek video because GPUImage use thread and AVAssetReader to read video buffer, caused bad performance and buggy.
 - If you still want to use GPUImage? Try GPUImage3, which using Metal instead of OpenGL
+- Using GPUImage2 library from here: https://github.com/techover-io/GPUImage2
 
 - My recommend: use AVFoundation and CoreImage to filter video. Which have good performance and easy to control anything you do. You can easy re-use GPUImage3's filters.
 Keywords:
