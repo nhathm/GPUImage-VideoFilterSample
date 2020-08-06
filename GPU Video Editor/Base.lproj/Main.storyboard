@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="j3P-qe-VJo">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="MainViewController" customModule="GPU_Video_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LA0-eQ-Kmy">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="LA0-eQ-Kmy" secondAttribute="bottom" id="ERe-eq-LYk"/>
+                            <constraint firstItem="LA0-eQ-Kmy" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="a6Y-Sb-GiH"/>
+                            <constraint firstItem="LA0-eQ-Kmy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="jlh-ga-G1T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="LA0-eQ-Kmy" secondAttribute="trailing" id="uyP-qB-Ys1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="5tg-0j-E56"/>
+                    <connections>
+                        <outlet property="tableViewMain" destination="LA0-eQ-Kmy" id="eee-pN-n2Z"/>
+                        <segue destination="p9I-q3-Wxz" kind="show" identifier="MainToGPUImageVideo" id="rpg-Md-PZU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="883" y="765"/>
+        </scene>
+        <!--Video Filter View Controller-->
+        <scene sceneID="xY2-Ou-B5J">
+            <objects>
+                <viewController id="p9I-q3-Wxz" customClass="VideoFilterViewController" customModule="GPU_Video_Editor" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZoY-Bv-MyJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KhK-2F-O95" customClass="RenderView" customModule="GPUImage">
+                                <rect key="frame" x="0.0" y="88" width="414" height="207"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="KhK-2F-O95" secondAttribute="height" multiplier="2:1" id="fAT-WS-Pha"/>
+                                </constraints>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="75" translatesAutoresizingMaskIntoConstraints="NO" id="9yS-pQ-VKl">
+                                <rect key="frame" x="10" y="303" width="394" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5y-BG-2y8">
+                                        <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
+                                        <state key="normal" title="Load video"/>
+                                        <connections>
+                                            <action selector="invokeButtonSelectVideo:forEvent:" destination="p9I-q3-Wxz" eventType="touchUpInside" id="KVA-sU-q3D"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ADw-sL-Chm">
+                                        <rect key="frame" x="150" y="0.0" width="83" height="30"/>
+                                        <state key="normal" title="Pause video"/>
+                                        <connections>
+                                            <action selector="invokeStartRecordButton:forEvent:" destination="p9I-q3-Wxz" eventType="touchUpInside" id="JsL-VV-4vO"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OeB-Jb-K4X">
+                                        <rect key="frame" x="308" y="0.0" width="86" height="30"/>
+                                        <state key="normal" title="Continue Video"/>
+                                        <connections>
+                                            <action selector="invokeStopRecordButton:forEvent:" destination="p9I-q3-Wxz" eventType="touchUpInside" id="cNN-dR-kzV"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9jP-JV-afx">
+                                <rect key="frame" x="0.0" y="522" width="414" height="291"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="EQc-xq-4Jk">
+                                <rect key="frame" x="38" y="484" width="338" height="31"/>
+                                <connections>
+                                    <action selector="changeFilterValue:forEvent:" destination="p9I-q3-Wxz" eventType="valueChanged" id="cai-jf-y3v"/>
+                                </connections>
+                            </slider>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Nwa-KI-DJg">
+                                <rect key="frame" x="100" y="433" width="214" height="32"/>
+                                <segments>
+                                    <segment title="Red"/>
+                                    <segment title="Green"/>
+                                    <segment title="Blue"/>
+                                </segments>
+                                <connections>
+                                    <action selector="rgbSegmentChanged:forEvent:" destination="p9I-q3-Wxz" eventType="valueChanged" id="qDh-s8-bHG"/>
+                                </connections>
+                            </segmentedControl>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s5d-9L-GKP">
+                                <rect key="frame" x="0.0" y="341" width="414" height="84"/>
+                                <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="84" id="3wb-LM-UhP"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="ong-xt-I0a"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="plM-k9-9LF"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KhK-2F-O95" firstAttribute="leading" secondItem="aZe-dC-wbM" secondAttribute="leading" id="EPu-hz-F8k"/>
+                            <constraint firstItem="9jP-JV-afx" firstAttribute="top" secondItem="EQc-xq-4Jk" secondAttribute="bottom" constant="8" id="Pyr-ja-xRn"/>
+                            <constraint firstItem="s5d-9L-GKP" firstAttribute="trailing" secondItem="aZe-dC-wbM" secondAttribute="trailing" id="WgN-8I-N69"/>
+                            <constraint firstItem="s5d-9L-GKP" firstAttribute="top" secondItem="9yS-pQ-VKl" secondAttribute="bottom" constant="8" id="YRP-cy-DN8"/>
+                            <constraint firstItem="9yS-pQ-VKl" firstAttribute="top" secondItem="KhK-2F-O95" secondAttribute="bottom" constant="8" id="Z9f-aR-fY0"/>
+                            <constraint firstItem="aZe-dC-wbM" firstAttribute="trailing" secondItem="EQc-xq-4Jk" secondAttribute="trailing" constant="40" id="ZxU-js-MEO"/>
+                            <constraint firstItem="Nwa-KI-DJg" firstAttribute="top" secondItem="s5d-9L-GKP" secondAttribute="bottom" constant="8" id="cXw-bb-uLd"/>
+                            <constraint firstItem="aZe-dC-wbM" firstAttribute="trailing" secondItem="KhK-2F-O95" secondAttribute="trailing" id="g7q-CD-a74"/>
+                            <constraint firstItem="KhK-2F-O95" firstAttribute="top" secondItem="aZe-dC-wbM" secondAttribute="top" id="gCx-A6-JIU"/>
+                            <constraint firstItem="9yS-pQ-VKl" firstAttribute="leading" secondItem="aZe-dC-wbM" secondAttribute="leading" constant="10" id="inD-0j-PMr"/>
+                            <constraint firstItem="aZe-dC-wbM" firstAttribute="trailing" secondItem="9yS-pQ-VKl" secondAttribute="trailing" constant="10" id="mc1-NK-Pa9"/>
+                            <constraint firstItem="9jP-JV-afx" firstAttribute="bottom" secondItem="aZe-dC-wbM" secondAttribute="bottom" id="oaQ-Ib-NaT"/>
+                            <constraint firstItem="EQc-xq-4Jk" firstAttribute="top" secondItem="Nwa-KI-DJg" secondAttribute="bottom" constant="20" id="qLK-NF-m8i"/>
+                            <constraint firstItem="Nwa-KI-DJg" firstAttribute="leading" secondItem="aZe-dC-wbM" secondAttribute="leading" constant="100" id="sMw-tP-O1I"/>
+                            <constraint firstItem="EQc-xq-4Jk" firstAttribute="leading" secondItem="aZe-dC-wbM" secondAttribute="leading" constant="40" id="ss5-0a-1rg"/>
+                            <constraint firstItem="9jP-JV-afx" firstAttribute="trailing" secondItem="aZe-dC-wbM" secondAttribute="trailing" id="u7G-Z5-PU3"/>
+                            <constraint firstItem="aZe-dC-wbM" firstAttribute="trailing" secondItem="Nwa-KI-DJg" secondAttribute="trailing" constant="100" id="vSM-Ck-BNK"/>
+                            <constraint firstItem="s5d-9L-GKP" firstAttribute="leading" secondItem="aZe-dC-wbM" secondAttribute="leading" id="wcY-J7-xoa"/>
+                            <constraint firstItem="9jP-JV-afx" firstAttribute="leading" secondItem="aZe-dC-wbM" secondAttribute="leading" id="yX9-em-Sya"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="aZe-dC-wbM"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="filterSlide" destination="EQc-xq-4Jk" id="M3S-V4-eQ0"/>
+                        <outlet property="listFiltersTableView" destination="9jP-JV-afx" id="ZNq-NN-lWZ"/>
+                        <outlet property="renderView" destination="KhK-2F-O95" id="WAK-vS-3Qy"/>
+                        <outlet property="rgbTypeSegment" destination="Nwa-KI-DJg" id="fns-XC-IBy"/>
+                        <outlet property="thumnailImagesHolder" destination="s5d-9L-GKP" id="62M-1g-gH1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vfA-Ay-Dvm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1902.8985507246377" y="1072.7678571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Q2p-dz-SyL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="j3P-qe-VJo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="aym-hn-WIu">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8Jj-Zr-Nlt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5CD-cx-vtL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="171.01449275362319" y="765.40178571428567"/>
+        </scene>
+    </scenes>
+</document>
